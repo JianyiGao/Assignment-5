@@ -1,1 +1,40 @@
 <!-- Fill in this file to create a UI view for editing listing entries. -->
+<div class="row" ng-controller="ListingsController" ng-init = "findOne()">
+  <div class = "page-header"> Edit Listing </div>
+  <form name="listingForm" class="form-horizontal" ng-submit="update(listingForm.$valid)">
+    <fieldset>
+      <div class="form-group" show-errors>
+        <label for="name">Name</label>
+        <input name="name" type="text" ng-model="listing.name" id="name" class="form-control" required>
+        <div ng-messages="listingForm.name.$error" role="alert">
+          <p class="help-block error-text" ng-message="required">Listing name is required</p>
+        </div>
+      </div>
+      <div class="form-group" show-errors>
+        <label for="code">Code</label>
+        <input name="code" type="text" ng-model="listing.code" id="code" class="form-control" required>
+        <div ng-messages="listingForm.code.$error" role="alert">
+          <p class="help-block error-text" ng-message="required">Listing code is required</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input name="address" type="text" ng-model="listing.address" id="address" class="form-control" >
+      </div>
+      <!-- <div class="form-group">
+        <label for="latitude">Latitude</label>
+        <input name="latitude" type="text" ng-model="listing.coordinates.latitude" id="latitude" class="form-control" >
+      </div>
+      <div class="form-group">
+        <label for="longitude">Longitude</label>
+        <input name="longitude" type="text" ng-model="listing.coordinates.longitude" id="longitude" class="form-control" >
+      </div> -->
+      <div class="form-group">
+        <input type="submit" class="btn btn-default">
+      </div>
+      <div ng-show="error" class="text-danger">
+        <strong ng-bind="error"></strong>
+      </div>
+    </fieldset>
+  </form>
+</div>
